@@ -1,0 +1,95 @@
+* {
+  font-size: 16px;
+  font-family: "Roboto Condensed", sans-serif;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #222222;
+}
+
+#root {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+header > input[type="text"] {
+  flex: 1;
+  padding: 0.5rem 1rem;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin-bottom: 4px;
+  padding: 4px;
+  width: 90vw;
+  line-height: 1.5;
+  border: 1px solid black;
+  background-color: cornflowerblue;
+  text-transform: uppercase;
+  color: seashell;
+
+  transition-duration: 200ms;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+}
+
+.task:hover {
+  border: 1px solid seashell;
+  /* background-color: hsla(0, 0%, 100%, 0.05); */
+}
+
+input[type="button"] {
+  width: 122px;
+  font-size: 10px;
+  outline: none;
+}
+
+.task > input[type="button"] {
+  background-color: crimson;
+  border: 2px solid black;
+  color: white;
+}
+
+.taskCompleted {
+  background-color: #333;
+  color: black;
+}
+
+.taskCompleted > input[type="button"] {
+  color: seashell;
+  border: 1px solid seashell;
+  padding: 1px 0;
+  background: none;
+  padding: 1px 8px;
+}
+
+.taskCompleted:hover > input[type="button"] {
+  background-color: cornflowerblue;
+  border-color: black;
+}
+
+.taskCompleted > .title {
+  text-decoration-style: solid;
+  text-decoration-color: crimson;
+  text-decoration-line: line-through;
+}
