@@ -64,6 +64,10 @@ input[type="button"] {
   outline: none;
 }
 
+input[type="button"]:hover {
+  cursor: pointer;
+}
+
 .task > input[type="button"] {
   background-color: crimson;
   border: 2px solid black;
