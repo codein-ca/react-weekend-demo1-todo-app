@@ -10,8 +10,9 @@ const Tasks = props => {
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      currentTask: "",
+      currentTaskTitle: "",
       taskList: [
         {
           title: "Buy more diapers",
@@ -27,6 +28,26 @@ class App extends React.Component {
         }
       ]
     };
+
+    this.updateCurrentTask = this.updateCurrentTask.bind(this);
+    this.addTask = this.addTask.bind(this);
+  }
+
+  updateCurrentTask(event) {
+    this.setState({ currentTaskTitle: event.target.value });
+  }
+
+  addTask() {
+    // console.info("A task will only be added if not empty");
+    if (this.state.currentTaskTitle !== "") {
+      const local = this.state.taskList;
+      local.push({
+        title: this.state.currentTaskTitle,
+        complete: false
+      });
+      this.setState({ taskList: local });
+      this.setState({ currentTaskTitle: "" });
+    }
   }
 
   render() {
@@ -36,7 +57,8 @@ class App extends React.Component {
           <input
             type="text"
             placeholder="What is the task?"
-            value={this.task}
+            value={this.currentTaskTitle}
+            onChange={this.updateCurrentTask}
           />
           <input type="button" value="Save" onClick={this.addTask} />
         </header>
