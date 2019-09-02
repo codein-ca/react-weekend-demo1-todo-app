@@ -3,7 +3,10 @@ import "./App.css";
 import Task from "./Task";
 
 const Tasks = props => {
-  console.log("TASKS props", props);
+  console.log("TASKS props updated", props);
+  // TODO: note the inconsistency between states
+  // The parent/container was not informed of child's actions
+  // So 'completion' updates the child's UI but not the parent state.
   return props.in.map((e, i) => <Task in={e} key={i} />);
 };
 
