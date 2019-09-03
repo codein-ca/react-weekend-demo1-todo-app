@@ -3,12 +3,33 @@ import "./App.css";
 import Task from "./Task";
 
 const Tasks = props => {
-  console.log("TASKS props updated", props);
+  // console.log("TASKS props updated", props);
   // TODO: note the inconsistency between states
   // The parent/container was not informed of child's actions
   // So 'completion' updates the child's UI but not the parent state.
   return props.in.map((e, i) => <Task in={e} key={i} />);
 };
+
+function api() {
+  const result = fetch("http://localhost:8000/wp-json/wp/v2/posts")
+    .then(x => x.json())
+    .then(x =>
+      x.map(e => {
+        const title = e["title"]["rendered"];
+        console.log(title);
+        return title;
+      })
+    );
+  result.then(x => x);
+}
+
+try {
+  // api();
+  const result = api();
+  console.log("result", result);
+} catch (error) {
+  console.log(error);
+}
 
 class App extends React.Component {
   constructor(props) {
